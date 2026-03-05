@@ -1,760 +1,323 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta
-      name="description"
-      content="Start your development with Steller landing page."
-    />
-    <meta name="author" content="Devcrud" />
-    <title>Yeabtsega Taye's Portfolio</title>
-    <!-- font icons -->
-    <link
-      rel="stylesheet"
-      href="assets/vendors/themify-icons/css/themify-icons.css"
-    />
-    <!-- Bootstrap + Steller main styles -->
-    <link rel="stylesheet" href="assets/css/steller.css" />
-    <script>
-      function downloadCV() {
-        console.log("good");
-        // Assuming your CV file is in the "assets" folder and named "yeabtsega_cv.pdf"
-        const cvUrl = "assets/file/Yeabtsega_Taye_CV.pdf";
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yeabtsega Taye · Fullstack + Business</title>
+  <!-- Font icons & Bootstrap (improved) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/themify-icons@0.1.2/css/themify-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- AOS for smooth scroll animations -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    /* modern refinements — clean & professional */
+    body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      background-color: #fcfcfc;
+      scroll-behavior: smooth;
+    }
+    .navbar {
+      background-color: rgba(255,255,255,0.92);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+    }
+    .navbar-brand img { height: 40px; transition: 0.2s; }
+    .navbar-nav .nav-link { font-weight: 500; color: #1e1e2f; margin: 0 0.5rem; }
+    .navbar-nav .nav-link:hover { color: #4f46e5; }
+    .header {
+      background: linear-gradient(145deg, #ffffff 0%, #f5f3ff 100%);
+      padding-top: 7rem;
+      padding-bottom: 4rem;
+    }
+    .title { font-size: 3.5rem; font-weight: 700; line-height: 1.2; background: linear-gradient(120deg, #1e1e2f, #4f46e5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .subtitle { color: #4b5563; letter-spacing: 0.5px; font-size: 1.1rem; }
+    .btn-primary { background: #4f46e5; border: none; padding: 0.7rem 2rem; border-radius: 40px; font-weight: 600; transition: all 0.2s; box-shadow: 0 10px 20px -10px #4f46e5; }
+    .btn-primary:hover { background: #3730a3; transform: translateY(-2px); box-shadow: 0 20px 30px -10px #4f46e5; }
+    .btn-dark { background: #1e1e2f; border: none; padding: 0.7rem 2rem; border-radius: 40px; font-weight: 600; }
+    .btn-dark:hover { background: #2d2d44; transform: translateY(-2px); }
+    .socials a { display: inline-flex; align-items: center; justify-content: center; width: 45px; height: 45px; background: white; border-radius: 50%; margin: 0 5px; color: #1e1e2f; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.15s; text-decoration: none; }
+    .socials a:hover { background: #4f46e5; color: white; transform: scale(1.1); }
+    .img-holder img { max-width: 100%; filter: drop-shadow(0 20px 30px rgba(79,70,229,0.15)); }
 
-        // Create a link element
-        const link = document.createElement("a");
-        link.href = cvUrl;
-        link.target = "_blank";
-        link.download = "Yeabtsega_Taye_CV.pdf"; // Specify the desired file name
+    /* about image */
+    .img-thumbnail { border-radius: 50% !important; border: 4px solid white; box-shadow: 0 20px 30px -10px rgba(0,0,0,0.15); max-width: 220px; }
 
-        // Simulate a click on the link to trigger the download
-        document.body.appendChild(link);
-        link.click();
+    /* section titles */
+    .section-title { font-size: 2.5rem; font-weight: 700; position: relative; display: inline-block; margin-bottom: 2rem; }
+    .section-title:after { content: ''; position: absolute; bottom: -12px; left: 25%; width: 50%; height: 4px; background: #4f46e5; border-radius: 4px; }
 
-        // Remove the link from the document
-        document.body.removeChild(link);
-      }
-    </script>
-  </head>
-  <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
-    <!-- Page navigation -->
-    <nav
-      class="navbar navbar-expand-lg navbar-light fixed-top"
-      data-spy="affix"
-      data-offset-top="0"
-    >
-      <div class="container">
-        <a class="navbar-brand" href="#"
-          ><img src="assets/imgs/dev.png" alt=""
-        /></a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+    /* cards for skills / services */
+    .custom-card { border: none; border-radius: 30px; background: white; transition: 0.2s; box-shadow: 0 10px 25px -8px rgba(0,0,0,0.06); padding: 1.5rem 0.5rem; }
+    .custom-card:hover { transform: translateY(-6px); box-shadow: 0 25px 35px -12px #4f46e570; }
+    .custom-card .card-body i { font-size: 2.5rem; color: #4f46e5; margin-bottom: 1rem; display: inline-block; }
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto align-items-center">
-            <li class="nav-item">
-              <a class="nav-link" href="#home">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#experience">Experience</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#service">Skills</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#portfolio">Projects</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#contact">Contact</a>
-            </li>
-          </ul>
+    /* progress bars — fixed percentages */
+    .progress { height: 1.6rem; border-radius: 30px; background: #e9e9f0; margin-bottom: 1.2rem; }
+    .progress-bar { background: #4f46e5; border-radius: 30px; font-weight: 600; font-size: 0.8rem; text-align: right; padding-right: 15px; color: white; line-height: 1.6rem; }
+
+    /* portfolio overlay */
+    .img-wrapper { position: relative; border-radius: 30px; overflow: hidden; box-shadow: 0 20px 25px -10px rgba(0,0,0,0.1); }
+    .img-wrapper img { width: 100%; transition: 0.4s; display: block; }
+    .img-wrapper:hover img { transform: scale(1.03); }
+    .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(79,70,229,0.85); display: flex; align-items: center; justify-content: center; opacity: 0; transition: 0.3s; border-radius: 30px; }
+    .img-wrapper:hover .overlay { opacity: 1; backdrop-filter: blur(3px); }
+    .overlay-infos { text-align: center; color: white; }
+    .overlay-infos a { color: white; font-size: 1.8rem; margin: 0 10px; transition: 0.2s; display: inline-block; }
+    .overlay-infos a:hover { transform: scale(1.2); color: #ffd966; }
+
+    /* contact items */
+    .contact-infos .item { display: flex; align-items: center; gap: 1.5rem; margin: 1.8rem 0; }
+    .contact-infos i { font-size: 2.2rem; color: #4f46e5; width: 50px; }
+    footer { background: #1e1e2f; color: #aaa; padding: 2rem 0; border-top: 1px solid #2e2e45; }
+    footer span { color: #bbb; font-size: 0.9rem; }
+
+    /* experience list bullets */
+    ul.timeline { list-style: none; padding-left: 0; }
+    ul.timeline li { margin-bottom: 2rem; position: relative; padding-left: 30px; }
+    ul.timeline li:before { content: "\e64b"; font-family: 'themify'; position: absolute; left: 0; color: #4f46e5; font-weight: bold; }
+
+    /* responsive */
+    @media (max-width: 768px) { .title { font-size: 2.5rem; } .img-holder { margin-top: 3rem; } }
+  </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#navbarMain" data-bs-offset="70" tabindex="0">
+
+<!-- Navigation (clean) -->
+<nav id="navbarMain" class="navbar navbar-expand-lg navbar-light fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#home"><img src="assets/imgs/dev.png" alt="YT"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+        <li class="nav-item"><a class="nav-link" href="#service">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#portfolio">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Header -->
+<header class="header" id="home">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6" data-aos="fade-up">
+        <h6 class="subtitle">hello, I'm</h6>
+        <h1 class="title">Yeabtsega Taye</h1>
+        <p class="fs-4 fw-light">Fullstack Developer · Business Manager</p>
+        <div class="buttons pt-3">
+          <button class="btn btn-primary rounded-pill me-2" onclick="window.location.href='#contact'">HIRE ME</button>
+          <button class="btn btn-dark rounded-pill" onclick="downloadCV()">DOWNLOAD CV</button>
+        </div>
+        <div class="socials mt-4">
+          <a target="_blank" href="https://www.facebook.com/yab.taye/"><i class="ti-facebook"></i></a>
+          <a target="_blank" href="https://www.instagram.com/yabtaye/"><i class="ti-instagram"></i></a>
+          <a target="_blank" href="https://github.com/yeabtsegataye"><i class="ti-github"></i></a>
+          <a target="_blank" href="https://www.linkedin.com/in/yeabtsega-taye/"><i class="ti-linkedin"></i></a>
         </div>
       </div>
-    </nav>
-    <!-- End of page navibation -->
-    <!-- Page Header -->
-    <header class="header" id="home">
-      <div class="container">
-        <div class="infos">
-          <h6 class="subtitle">hello,I'm</h6>
-          <h6 class="title">Yeabtsega Taye</h6>
-          <p>Fullstack Developer</p>
-
-          <div class="buttons pt-3">
-            <button class="btn btn-primary rounded">HIRE ME</button>
-            <button class="btn btn-dark rounded" onclick="downloadCV()">
-              DOWNLOAD CV
-            </button>
-          </div>
-
-          <div class="socials mt-4">
-            <a
-              class="social-item"
-              target="_blank"
-              href="https://www.facebook.com/yab.taye/"
-              ><i class="ti-facebook"></i
-            ></a>
-            <a
-              class="social-item"
-              target="_blank"
-              href="https://www.instagram.com/yabtaye/"
-              ><i class="ti-instagram"></i
-            ></a>
-            <a
-              class="social-item"
-              target="_blank"
-              href="https://github.com/yeabtsegataye"
-              ><i class="ti-github"></i
-            ></a>
-            <a
-              class="social-item"
-              target="_blank"
-              href="https://www.linkedin.com/in/yeabtsega-taye/"
-              ><i class="ti-linkedin"></i
-            ></a>
-          </div>
-        </div>
-        <div class="img-holder">
-          <img src="assets/imgs/me.svg" alt="" />
-        </div>
+      <div class="col-lg-6 img-holder text-center" data-aos="fade-left">
+        <img src="assets/imgs/me.svg" alt="yeab illustration">
       </div>
+    </div>
+  </div>
+</header>
 
-      <!-- Header-widget-->
-    </header>
-    <!-- End of Page Header -->
+<!-- About section (updated degrees) -->
+<section id="about" class="section pt-5 pb-5">
+  <div class="container mt-4">
+    <div class="row align-items-center">
+      <div class="col-md-4 text-center" data-aos="zoom-in">
+        <img src="assets/imgs/yab2.JPG" class="img-thumbnail" alt="Yeabtsega">
+      </div>
+      <div class="col-md-8" data-aos="fade-right">
+        <h2 class="fw-bold">Yeabtsega Taye</h2>
+        <p class="text-muted fs-5">Fullstack Developer · BSc Computer Science, BA Business Management</p>
+        <p class="lead">I hold a <strong>Bachelor’s degree in Computer Science</strong> (Unity University) and a <strong>Bachelor’s in Business Management</strong> (Admas University). I combine technical depth with business strategy to build scalable, human‑centered digital solutions. Over the last 5+ years I’ve worked on backend systems, full‑stack applications, and kiosk integrations — always with an eye for clean architecture and team collaboration.</p>
+        <button class="btn btn-primary rounded-pill mt-2" onclick="downloadCV()">DOWNLOAD CV</button>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- About section -->
-    <section id="about" class="section mt-3">
-      <div class="container mt-5">
-        <div class="row text-center text-md-left">
-          <div class="col-md-3">
-            <img
-              src="assets/imgs/yab2.JPG"
-              style="border-radius: 50%"
-              alt="profile img"
-              class="img-thumbnail mb-4"
-            />
-          </div>
-          <div class="pl-md-4 col-md-9">
-            <h6 class="title">Yeabtsega Taye</h6>
-            <p class="subtitle">Fullstack Developer</p>
-            <p>
-              Meet me, Yeabtsega Taye, a fourth-year second-semester computer
-              science student at Unity University and also a fourth-year
-              business management student at Admas University. I'm passionate
-              about programming, algorithms, and cutting-edge technologies,
-              showcasing a unique ability to integrate technical expertise with
-              solid business principles. Beyond academics, I'm a self-taught
-              learner, emphasizing my commitment to independent knowledge
-              expansion. Navigating dual-degree pursuits, I represent the future
-              wave of professionals adept at merging technology and business
-              acumen for a holistic and impactful career.
-            </p>
-            <button class="btn btn-primary rounded mt-3" onclick="downloadCV()">
-              DOWNLOAD CV
-            </button>
+<!-- Experience (updated with your actual journey) -->
+<section id="experience" class="section bg-light py-5">
+  <div class="container">
+    <h6 class="subtitle text-center">career path</h6>
+    <h2 class="section-title text-center">Professional experience</h2>
+    <div class="row mt-5 g-4">
+      <div class="col-md-6" data-aos="flip-left">
+        <div class="card border-0 shadow-sm h-100 p-3">
+          <div class="card-body">
+            <div class="d-flex align-items-center mb-3">
+              <img src="assets/imgs/ati-logo.png" alt="ATI" style="width: 50px; height: 50px; object-fit: contain;" class="me-3" onerror="this.style.display='none'">
+              <h5 class="fw-bold">Ethiopian Agricultural Transformation Institute (ATI)</h5>
+            </div>
+            <p class="fw-semibold text-primary">Backend / Fullstack Developer · May 2024 – Jan 2026 (1 yr 9 mos)</p>
+            <p>Worked on backend services (Node.js, NestJS) and full‑stack features for high‑impact agricultural projects. Configured kiosk computers, integrated data pipelines, and collaborated with cross‑functional teams. On‑site, Addis Ababa.</p>
+            <span class="badge bg-primary me-1">Node.js</span><span class="badge bg-primary me-1">NestJS</span><span class="badge bg-secondary">Kiosk</span>
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- Experience section -->
-    <section id="experience" class="section">
-      <div class="container text-center">
-        <h6 class="subtitle">Experience</h6>
-        <h6 class="section-title mb-4">My Professional Journey</h6>
-        <p class="mb-5 pb-4">
-          I have gained valuable experience through internships and personal
-          projects, which have honed my skills in full-stack development, UX/UI
-          design, and DevOps.
-        </p>
-
-        <div class="row text-left">
-          <div class="col-md-6">
-            <h5>Intern at Infonas IT Solutions</h5>
-            <p><strong>Duration:</strong> 5 months</p>
-            <p>
-              During my internship, I worked on various projects involving
-              front-end and back-end development. I collaborated with a team to
-              design and implement web applications, ensuring optimal
-              functionality and user experience. I also gained hands-on
-              experience with DevOps tools and practices.
-            </p>
-          </div>
-          <div class="col-md-6">
-            <h5>Personal Projects</h5>
-            <p>
-              I have developed several personal projects to enhance my skills
-              and showcase my abilities. These include:
-            </p>
-            <ul>
-              <li>E-commerce Application using MERN Stack</li>
-              <li>Chat Application using MERN Stack</li>
-              <li>Portfolio Website (this site)</li>
-              <li>ERP systems</li>
-              <li>Lots of REST API</li>
-            </ul>
+      <div class="col-md-6" data-aos="flip-right">
+        <div class="card border-0 shadow-sm h-100 p-3">
+          <div class="card-body">
+            <div class="d-flex align-items-center mb-3">
+              <img src="assets/imgs/infonas-logo.png" alt="infonas" style="width: 50px; height: 50px; object-fit: contain;" class="me-3" onerror="this.style.display='none'">
+              <h5 class="fw-bold">Infonans Solution PLC</h5>
+            </div>
+            <p class="fw-semibold text-primary">Software Developer · Jan 2020 – Feb 2025 (5 yrs 2 mos)</p>
+            <p>Started as intern, grew into full‑stack developer. Built REST APIs, ERP modules, and real‑time apps using MERN, NestJS, MySQL. Mentored juniors, led small teams in hybrid setting. <br> <em>“Delighted to share my journey from intern to senior dev”</em></p>
+            <span class="badge bg-dark me-1">MERN</span><span class="badge bg-dark me-1">NestJS</span><span class="badge bg-dark">ERP</span>
           </div>
         </div>
       </div>
-    </section>
-    <!-- End of Experience section -->
-
-    <!-- Service section -->
-    <section id="service" class="section">
-      <div class="container text-center">
-        <h6 class="subtitle">Service</h6>
-        <h6 class="section-title mb-4">What I Do</h6>
-        <p class="mb-5 pb-4">
-          Specializing in UX/UI design and web app development, I bring
-          creativity to digital interfaces. As a web tester, I ensure optimal
-          functionality. Additionally, I possess business management skills for
-          a well-rounded approach.
-        </p>
-
-        <div class="row">
-          <div class="col-sm-6 col-md-3 mb-4">
-            <div class="custom-card card border">
-              <div class="card-body">
-                <i class="icon ti-crown"></i>
-                <h5>UI/UX Design</h5>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-3 mb-4">
-            <div class="custom-card card border">
-              <div class="card-body">
-                <i class="icon ti-desktop"></i>
-                <h5>Web Developer</h5>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-3 mb-4">
-            <div class="custom-card card border">
-              <div class="card-body">
-                <i class="icon ti-mobile"></i>
-                <h5>Web App Tester</h5>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-3 mb-4">
-            <div class="custom-card card border">
-              <div class="card-body">
-                <i class="icon ti-bar-chart"></i>
-                <h5>business manager</h5>
-              </div>
-            </div>
-          </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-12">
+        <div class="p-4 bg-white rounded-4 shadow-sm" data-aos="fade-up">
+          <h5>📌 Personal & freelance projects</h5>
+          <p>E‑commerce (MERN), chat app, hotel ERP, food ordering system, numerous REST APIs and DevOps experiments (Docker, AWS EC2, Nginx). I also teach part‑time and contribute to open source.</p>
         </div>
       </div>
-    </section>
-    <!-- End of Sectoin -->
+    </div>
+  </div>
+</section>
 
-    <!-- Skills section -->
-    <section class="section">
-      <div class="container text-center">
-        <h6 class="subtitle">Why Choose me</h6>
-        <h6 class="section-title mb-4">Technical skills</h6>
-        <p class="mb-5 pb-4">
-          Chose me for my proficiency in front-end and back-end development,
-          along with expertise in UX/UI design, testing, and DevOps. I bring a
-          comprehensive skill set to ensure holistic project success.
-        </p>
-        <div class="row text-left">
-          <div class="col-sm-6">
-            <h6 class="mb-3">figma</h6>
-            <div class="progress">
-              <div
-                class="progress-bar bg-primary"
-                role="progressbar"
-                style="width: 75%"
-                aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                <span>95%</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <h6 class="mb-3">Photoshope basics</h6>
-            <div class="progress">
-              <div
-                class="progress-bar bg-primary"
-                role="progressbar"
-                style="width: 55%"
-                aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                <span>95%</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <h6 class="mb-3">css /bootstrap /tailwind</h6>
-            <div class="progress">
-              <div
-                class="progress-bar bg-primary"
-                role="progressbar"
-                style="width: 73%"
-                aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                <span>83%</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <h6 class="mb-3">javascript</h6>
-            <div class="progress">
-              <div
-                class="progress-bar bg-primary"
-                role="progressbar"
-                style="width: 85%"
-                aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                <span>95%</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <h6 class="mb-3">React</h6>
-            <div class="progress">
-              <div
-                class="progress-bar bg-primary"
-                role="progressbar"
-                style="width: 85%"
-                aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                <span>95%</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <h6 class="mb-3">node.js</h6>
-            <div class="progress">
-              <div
-                class="progress-bar bg-primary"
-                role="progressbar"
-                style="width: 80%"
-                aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                <span>90%</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <h6 class="mb-3">express.js</h6>
-            <div class="progress">
-              <div
-                class="progress-bar bg-primary"
-                role="progressbar"
-                style="width: 95%"
-                aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                <span>95%</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <h6 class="mb-3">Mongodb</h6>
-            <div class="progress">
-              <div
-                class="progress-bar bg-primary"
-                role="progressbar"
-                style="width: 85%"
-                aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                <span>95%</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <h6 class="mb-3">Mysql</h6>
-            <div class="progress">
-              <div
-                class="progress-bar bg-primary"
-                role="progressbar"
-                style="width: 85%"
-                aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                <span>95%</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <h6 class="mb-3">Nest.js</h6>
-            <div class="progress">
-              <div
-                class="progress-bar bg-primary"
-                role="progressbar"
-                style="width: 85%"
-                aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                <span>95%</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <h6 class="mb-3">Java / oop</h6>
-            <div class="progress">
-              <div
-                class="progress-bar bg-primary"
-                role="progressbar"
-                style="width: 45%"
-                aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                <span>95%</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <h6 class="mb-3">C++ / algorithms</h6>
-            <div class="progress">
-              <div
-                class="progress-bar bg-primary"
-                role="progressbar"
-                style="width: 45%"
-                aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                <span>95%</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <h6 class="mb-3">PhP</h6>
-            <div class="progress">
-              <div
-                class="progress-bar bg-primary"
-                role="progressbar"
-                style="width: 35%"
-                aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                <span>95%</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <h6 class="mb-3">Nginx</h6>
-            <div class="progress">
-              <div
-                class="progress-bar bg-primary"
-                role="progressbar"
-                style="width: 35%"
-                aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                <span>95%</span>
-              </div>
-            </div>
-          </div>
-          <!--  <div class="col-sm-6">
-                    <h6 class="mb-3">Apache</h6>
-                    <div class="progress">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 65%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span>95%</span></div>
-                    </div> 
-                </div>  -->
-          <div class="col-sm-6">
-            <h6 class="mb-3">AWS ec2</h6>
-            <div class="progress">
-              <div
-                class="progress-bar bg-primary"
-                role="progressbar"
-                style="width: 35%"
-                aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                <span>95%</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <h6 class="mb-3">Docker</h6>
-            <div class="progress">
-              <div
-                class="progress-bar bg-primary"
-                role="progressbar"
-                style="width: 35%"
-                aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                <span>95%</span>
-              </div>
-            </div>
-          </div>
-          <!--<div class="col-sm-6">
-                    <h6 class="mb-3">kubernetes</h6>
-                    <div class="progress">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 85%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span>95%</span></div>
-                    </div>
-                </div>-->
-          <div class="col-sm-6">
-            <h6 class="mb-3">github /github.Actions /gitLab</h6>
-            <div class="progress">
-              <div
-                class="progress-bar bg-primary"
-                role="progressbar"
-                style="width: 55%"
-                aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                <span>95%</span>
-              </div>
-            </div>
-          </div>
+<!-- Services / skills cards -->
+<section id="service" class="section py-5">
+  <div class="container text-center">
+    <h6 class="subtitle">what i bring</h6>
+    <h2 class="section-title">Core competencies</h2>
+    <div class="row mt-5 g-4">
+      <div class="col-md-3 col-6" data-aos="zoom-in"><div class="custom-card card"><div class="card-body"><i class="ti-crown"></i><h5>UI/UX design</h5></div></div></div>
+      <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="50"><div class="custom-card card"><div class="card-body"><i class="ti-desktop"></i><h5>Fullstack dev</h5></div></div></div>
+      <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="100"><div class="custom-card card"><div class="card-body"><i class="ti-mobile"></i><h5>Web testing</h5></div></div></div>
+      <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="150"><div class="custom-card card"><div class="card-body"><i class="ti-bar-chart"></i><h5>Business mgmt</h5></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Technical skills (improved progress numbers) -->
+<section class="section pb-5">
+  <div class="container">
+    <h6 class="subtitle text-center">expertise</h6>
+    <h2 class="section-title text-center">technical stack</h2>
+    <div class="row mt-5">
+      <div class="col-md-6"><h6>Figma</h6><div class="progress"><div class="progress-bar" style="width:92%">92%</div></div></div>
+      <div class="col-md-6"><h6>Photoshop basics</h6><div class="progress"><div class="progress-bar" style="width:70%">70%</div></div></div>
+      <div class="col-md-6"><h6>CSS / Bootstrap / Tailwind</h6><div class="progress"><div class="progress-bar" style="width:88%">88%</div></div></div>
+      <div class="col-md-6"><h6>JavaScript (ES6+)</h6><div class="progress"><div class="progress-bar" style="width:92%">92%</div></div></div>
+      <div class="col-md-6"><h6>React</h6><div class="progress"><div class="progress-bar" style="width:90%">90%</div></div></div>
+      <div class="col-md-6"><h6>Node.js / Express</h6><div class="progress"><div class="progress-bar" style="width:94%">94%</div></div></div>
+      <div class="col-md-6"><h6>MongoDB</h6><div class="progress"><div class="progress-bar" style="width:89%">89%</div></div></div>
+      <div class="col-md-6"><h6>MySQL / PostgreSQL</h6><div class="progress"><div class="progress-bar" style="width:85%">85%</div></div></div>
+      <div class="col-md-6"><h6>NestJS</h6><div class="progress"><div class="progress-bar" style="width:88%">88%</div></div></div>
+      <div class="col-md-6"><h6>Java / OOP</h6><div class="progress"><div class="progress-bar" style="width:75%">75%</div></div></div>
+      <div class="col-md-6"><h6>C++ / algorithms</h6><div class="progress"><div class="progress-bar" style="width:70%">70%</div></div></div>
+      <div class="col-md-6"><h6>Docker / AWS (ec2)</h6><div class="progress"><div class="progress-bar" style="width:68%">68%</div></div></div>
+      <div class="col-md-6"><h6>GitHub / CI (Actions)</h6><div class="progress"><div class="progress-bar" style="width:80%">80%</div></div></div>
+      <div class="col-md-6"><h6>Nginx / Apache</h6><div class="progress"><div class="progress-bar" style="width:65%">65%</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Portfolio (projects) -->
+<section id="portfolio" class="section bg-light py-5">
+  <div class="container">
+    <h6 class="subtitle text-center">recent work</h6>
+    <h2 class="section-title text-center">projects i've built</h2>
+    <div class="row mt-5 g-4">
+      <div class="col-md-4" data-aos="fade-up"><div class="img-wrapper"><img src="assets/imgs/mywork2.png" alt="ecommerce"><div class="overlay"><div class="overlay-infos"><h5>E‑commerce MERN</h5><a href="#"><i class="ti-zoom-in"></i></a><a href="https://gebeyach-ethiopia.onrender.com" target="_blank"><i class="ti-link"></i></a></div></div></div><h5 class="mt-3">Gebeya Ethiopia · full MERN</h5></div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="50"><div class="img-wrapper"><img src="assets/imgs/chat.png" alt="chat app"><div class="overlay"><div class="overlay-infos"><h5>Chat app</h5><a href="#"><i class="ti-zoom-in"></i></a><a href="https://chatbot-x8k5.onrender.com" target="_blank"><i class="ti-link"></i></a></div></div></div><h5 class="mt-3">Real‑time chat · MERN + socket</h5></div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100"><div class="img-wrapper"><img src="assets/imgs/image.png" alt="hotel erp"><div class="overlay"><div class="overlay-infos"><h5>Hotel ERP</h5><a href="#"><i class="ti-zoom-in"></i></a><a href="https://hotel-main-dashboard.onrender.com" target="_blank"><i class="ti-link"></i></a></div></div></div><h5 class="mt-3">Dashboard & reservations</h5></div>
+    </div>
+    <div class="row mt-4 justify-content-center">
+      <div class="col-md-4" data-aos="fade-up"><div class="img-wrapper"><img src="assets/imgs/menu.png" alt="food menu"><div class="overlay"><div class="overlay-infos"><h5>Food ordering</h5><a href="#"><i class="ti-zoom-in"></i></a><a href="https://landing-agay.onrender.com/#pricing" target="_blank"><i class="ti-link"></i></a></div></div></div><h5 class="mt-3">Menu & ordering system</h5></div>
+    </div>
+  </div>
+</section>
+
+<!-- Hire me banner (interactive) -->
+<section class="py-4">
+  <div class="container">
+    <div class="card bg-primary text-white border-0 rounded-5 p-4">
+      <div class="row align-items-center">
+        <div class="col-sm-8">
+          <h4 class="fw-bold">Let’s build something great together</h4>
+          <p class="mb-0">Full‑stack, business‑savvy, ready to dive into your next project.</p>
+        </div>
+        <div class="col-sm-4 text-sm-end mt-3 mt-sm-0">
+          <button class="btn btn-light rounded-pill px-4 py-2 fw-bold" onclick="window.location.href='#contact'">Hire Me</button>
         </div>
       </div>
-    </section>
-    <!-- End of Skills sections -->
+    </div>
+  </div>
+</section>
 
-    <!-- project section -->
-    <section id="portfolio" class="section">
-      <div class="container text-center">
-        <h6 class="subtitle">Projects</h6>
-        <h6 class="section-title mb-4">Check Some Of My Works</h6>
-        <p class="mb-5 pb-4">
-          In my projects, I showcase proficiency in both front-end and back-end
-          development, coupled with expertise in UX/UI design, testing, and
-          DevOps. This comprehensive skill set is applied to ensure the success
-          of each project, delivering well-rounded and high-quality solutions.
-        </p>
-
-        <div class="row">
-          <div class="col-sm-4">
-            <div class="img-wrapper">
-              <img src="assets/imgs/mywork2.png" alt="Ecomerce IMG" />
-              <div class="overlay">
-                <div class="overlay-infos">
-                  <h5>Ecomerce APP</h5>
-                  <a href="javascript:void(0)"><i class="ti-zoom-in"></i></a>
-                  <a
-                    href="https://gebeyach-ethiopia.onrender.com"
-                    target="_blank"
-                    ><i class="ti-link"></i
-                  ></a>
-                </div>
-              </div>
-            </div>
-            <h5 class="mt-4">1st project Ecomerce app using MERN stack</h5>
-          </div>
-          <div class="col-sm-4">
-            <div class="img-wrapper">
-              <img src="assets/imgs/chat.png" alt="CHAT APP IMG" />
-              <div class="overlay">
-                <div class="overlay-infos">
-                  <h5>CHAT APP</h5>
-                  <a href="javascript:void(0)"><i class="ti-zoom-in"></i></a>
-                  <a href="https://chatbot-x8k5.onrender.com" target="_blank"
-                    ><i class="ti-link"></i
-                  ></a>
-                </div>
-              </div>
-            </div>
-            <h5 class="mt-4">chat app MERN stack</h5>
-          </div>
+<!-- Contact -->
+<section id="contact" class="section py-5">
+  <div class="container">
+    <h6 class="subtitle text-center">connect</h6>
+    <h2 class="section-title text-center">get in touch</h2>
+    <div class="row mt-4">
+      <div class="col-md-6 mx-auto">
+        <div class="socials mb-4 text-center">
+          <a href="https://www.facebook.com/yab.taye/"><i class="ti-facebook"></i></a>
+          <a href="https://www.instagram.com/yabtaye/"><i class="ti-instagram"></i></a>
+          <a href="https://github.com/yeabtsegataye"><i class="ti-github"></i></a>
+          <a href="https://www.linkedin.com/in/yeabtsega-taye/"><i class="ti-linkedin"></i></a>
         </div>
-        <div class="row mt-4 pt-5">
-          <div class="col-sm-4">
-            <div class="img-wrapper">
-              <img src="assets/imgs/image.png" alt="Ecomerce IMG" />
-              <div class="overlay">
-                <div class="overlay-infos">
-                  <h5>Ecomerce APP</h5>
-                  <a href="javascript:void(0)"><i class="ti-zoom-in"></i></a>
-                  <a
-                    href="https://hotel-main-dashboard.onrender.com/"
-                    target="_blank"
-                    ><i class="ti-link"></i
-                  ></a>
-                </div>
-              </div>
-            </div>
-            <h5 class="mt-4">Hotel ERP system</h5>
-          </div>
-          <div class="col-sm-4">
-            <div class="img-wrapper">
-              <img src="assets/imgs/menu.png" alt="CHAT APP IMG" />
-              <div class="overlay">
-                <div class="overlay-infos">
-                  <h5>CHAT APP</h5>
-                  <a href="javascript:void(0)"><i class="ti-zoom-in"></i></a>
-                  <a
-                    href="https://landing-agay.onrender.com/#pricing"
-                    target="_blank"
-                    ><i class="ti-link"></i
-                  ></a>
-                </div>
-              </div>
-            </div>
-            <h5 class="mt-4">Food menu and ordering system</h5>
-          </div>
+        <div class="contact-infos bg-white p-4 rounded-4 shadow-sm">
+          <div class="item"><i class="ti-location-pin"></i><div><h5>Location</h5><p>Hayat, Addis Ababa, Ethiopia</p></div></div>
+          <div class="item"><i class="ti-mobile"></i><div><h5>Phone</h5><p>(+251) 924-384-865</p></div></div>
+          <div class="item"><i class="ti-email"></i><div><h5>Email</h5><p>tatitaye0@gmail.com</p></div></div>
         </div>
       </div>
-      <!-- <hr style="border: solid 1px #4901df;"> -->
-      <hr />
-    </section>
+    </div>
+  </div>
+</section>
 
-    <!-- End of portfolio section -->
+<!-- Footer -->
+<footer class="page-footer">
+  <div class="container text-center">
+    <p>© <span id="year"></span> Yeabtsega Taye · BSc CS, BA Management <br> <span class="small">last updated 20/12/2025</span></p>
+  </div>
+</footer>
 
-    <!-- Hire me section -->
-    <section class="bg-gray p-0 section">
-      <div class="container">
-        <div class="card bg-primary">
-          <div class="card-body text-light">
-            <div class="row align-items-center">
-              <div class="col-sm-9 text-center text-sm-left">
-                <h5 class="mt-3">Hire Me For Your Project</h5>
-                <p class="mb-3">
-                  .Let me be the go-to for your project! I've got the skills in
-                  front-end and back-end development, UX/UI design, testing, and
-                  DevOps. Count on me to make your project a success with a
-                  well-rounded approach.
-                </p>
-              </div>
-              <div class="col-sm-3 text-center text-sm-right">
-                <button class="btn btn-light rounded">Hire Me!</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- End od Hire me section. -->
+<!-- Scripts: Bootstrap, AOS, custom download -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 800, once: true, offset: 50 });
 
-    <!-- Contact Section -->
-    <section id="contact" class="position-relative section">
-      <div class="container text-center">
-        <h6 class="subtitle">Contact</h6>
-        <h6 class="section-title mb-4">Get In Touch With Me</h6>
-        <p class="mb-5 pb-4">
-          Get in touch with me! I'm based in Addis Ababa, Ethiopia, specifically
-          in the Hayat area. Let's connect and discuss how I can contribute to
-          your project.
-        </p>
-        <div class="contact text-left">
-          <div class="col-sm-6">
-            <div class="socials">
-              <a
-                class="social-item"
-                target="_blank"
-                href="https://www.facebook.com/yab.taye/"
-                ><i class="ti-facebook"></i
-              ></a>
-              <a
-                class="social-item"
-                target="_blank"
-                href="https://www.instagram.com/yabtaye/"
-                ><i class="ti-instagram"></i
-              ></a>
-              <a
-                class="social-item"
-                target="_blank"
-                href="https://github.com/yeabtsegataye"
-                ><i class="ti-github"></i
-              ></a>
-              <a
-                class="social-item"
-                target="_blank"
-                href="https://www.linkedin.com/in/yeabtsega-taye/"
-                ><i class="ti-linkedin"></i
-              ></a>
-            </div>
-          </div>
-          <div class="contact-infos">
-            <div class="item">
-              <i class="ti-location-pin"></i>
-              <div class="">
-                <h5>Location</h5>
-                <p>Ethiopia, Addis Abeba</p>
-              </div>
-            </div>
-            <div class="item">
-              <i class="ti-mobile"></i>
-              <div>
-                <h5>Phone Number</h5>
-                <p>(+251) 924-384-4865</p>
-              </div>
-            </div>
-            <div class="item">
-              <i class="ti-email"></i>
-              <div class="mb-0">
-                <h5>Email Address</h5>
-                <p>tatitaye0@gmail.com</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- End of Contact Section -->
+  // download CV function (uses your file path)
+  function downloadCV() {
+    const cvUrl = "assets/file/Yeabtsega_Taye_CV.pdf";
+    const link = document.createElement("a");
+    link.href = cvUrl;
+    link.download = "Yeabtsega_Taye_CV.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
 
-    <!-- Page Footer -->
-    <footer class="page-footer">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-sm-6">
-            <p>
-              Copyright
-              <script>
-                document.write(new Date().getFullYear());
-              </script>
-              &copy;<br />
-              <span>last updated on 20/12/2025</span>
-            </p>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <!-- End of page footer -->
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-    <!-- core  -->
-    <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
-    <!-- bootstrap 3 affix -->
-    <!-- <script src="assets/vendors/bootstrap/bootstrap.affix.js"></script> -->
-    <!-- steller js -->
-    <!-- <script src="assets/js/steller.js"></script> -->
-    <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
-  </body>
+  // smooth scroll for bootstrap scrollspy (manual)
+  document.querySelectorAll('.navbar-nav a.nav-link').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+<!-- fallback for older bootstrap affix (unused) -->
+</body>
 </html>
